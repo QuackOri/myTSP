@@ -4,18 +4,8 @@ import math
 # 배달원의 위치
 g_sales_man = (2, 8)
 
-# 배달가는 곳의 위치들
-a = (5, 8)
-b = (10, 4)
-c = (-40, 2)
-d = (-1, 8)
-e = (100, 100)
-f = (29, -48)
-g = (-50, -50)
-h = (1, 1)
-i = (90, -90)
-j = (50, 8)
-delivery_places = [a, b, c, d, e, f, g, h, i, j]
+# 배달 가는 곳의 위치들
+delivery_places = [(5, 8), (10, 4), (-40, 2), (-1, 8), (100, 100), (29, -48), (-50, -50), (1, 1), (90, -90), (50, 8)]
 
 # 추후 배달 우선 순위가 기록될 리스트
 g_rank_list = [0 for _ in range(len(delivery_places))]
@@ -103,10 +93,10 @@ def devide_area(vertical, horizontal):
             d.append(delivery_places.index(place))
         else:
             c.append(delivery_places.index(place))
-    print(a)
-    print(b)
-    print(c)
-    print(d)
+    # print(a)
+    # print(b)
+    # print(c)
+    # print(d)
 
     return [a, b, c, d]
 
@@ -159,4 +149,3 @@ for _ in range(len(area_array)):
 
 # 우선 순위를 출력한다.
 print(g_rank_list)
-print(v, h)
