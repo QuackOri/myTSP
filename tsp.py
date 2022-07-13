@@ -84,12 +84,12 @@ def delivery(area):
 # 지금 코드에서는 네부분으로 나눈다.
 # 평균값을 기준으로 오른쪽 위가 0번(a), 왼쪽 위가 1번(b), 왼쪽 아래가 2번(c), 오른쪽 아래가 3번(d)이다.
 def make_area():
-    horizontal = sum([dp[0] for dp in delivery_places]) / number_dp
-    vertical = sum([dp[1] for dp in delivery_places]) / number_dp
-    return horizontal, vertical
+    vertical = sum([dp[0] for dp in delivery_places]) / number_dp
+    horizontal = sum([dp[1] for dp in delivery_places]) / number_dp
+    return vertical, horizontal
 
 # 각 배달지를 make_area에서 나눈 영역에 따라 나눈다.
-def devide_area(horizontal, vertical):
+def devide_area(vertical, horizontal):
     a = []
     b = []
     c = []
@@ -103,15 +103,15 @@ def devide_area(horizontal, vertical):
             d.append(delivery_places.index(place))
         else:
             c.append(delivery_places.index(place))
-    # print(a)
-    # print(b)
-    # print(c)
-    # print(d)
+    print(a)
+    print(b)
+    print(c)
+    print(d)
 
     return [a, b, c, d]
 
 # 판매원이 있는 영역을 구한다.
-def where_is_sales_man(horizontal, vertical):
+def where_is_sales_man(vertical, horizontal):
     if g_sales_man[0] >= vertical and g_sales_man[1] >= horizontal:
         return 0
     elif g_sales_man[0] < vertical and g_sales_man[1] >= horizontal:
@@ -138,11 +138,11 @@ def next_array():
 
 
 # 기준선을 만든다.
-h, v = make_area()
+v, h = make_area()
 # 배달지를 영역에 따라 나눈다.
-area_array = devide_area(h, v)
+area_array = devide_area(v, h)
 # 배달원이 속한 영역을 구한다.
-sales_man_area = where_is_sales_man(h, v)
+sales_man_area = where_is_sales_man(v, h)
 
 # now_area는 인덱스이고, now_delivery는 list이다.
 now_area = sales_man_area
@@ -159,3 +159,4 @@ for _ in range(len(area_array)):
 
 # 우선 순위를 출력한다.
 print(g_rank_list)
+print(v, h)
